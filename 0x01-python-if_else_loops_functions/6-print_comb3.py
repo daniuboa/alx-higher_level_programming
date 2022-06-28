@@ -2,6 +2,6 @@
 for firstDigit in range(0, 10):
     for secondDigit in range(firstDigit + 1, 10):
         if firstDigit == 8 and secondDigit == 9:
-            print(f"{firstDigit}{secondDigit}")
+            print("{}{}".format(firstDigit, secondDigit))
         else:
-            print(f"{firstDigit}{secondDigit}", end=", ")
+            print("{}{}".format(firstDigit, secondDigit), end=", ")

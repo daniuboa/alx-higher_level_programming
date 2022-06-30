@@ -12,3 +12,6 @@ def main():
         print(f"{argc} arguments.")
         for i in range(1, argc + 1):
             print(f"{i}: {sys.argv[i]}")
+
+if __name__ == "__main__":
+    main()

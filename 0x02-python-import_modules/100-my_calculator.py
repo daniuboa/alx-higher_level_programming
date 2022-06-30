@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-
-from xml.etree.ElementPath import ops
-
-
 if __name__ == "__main__":
     from calculator_1 import add, sub, mul, div
     from sys import argv, exit
@@ -25,8 +21,8 @@ if __name__ == "__main__":
     if operat == '+':
         print("{:d} {} {:d} = {}".format(a, argv[2], b, add(a, b)))
     elif operat == '-':
-        print("{:d} {} {:d} = {}".format(a, argv[2], b, add(a, b)))
+        print("{:d} {} {:d} = {}".format(a, argv[2], b, sub(a, b)))
     elif operat == '*':
-        print("{:d} {} {:d} = {}".format(a, argv[2], b,add(a, b)))
+        print("{:d} {} {:d} = {}".format(a, argv[2], b,mul(a, b)))
     else:
-        print("{:d} {} {:d} = {}".format(a, argv[2], b, add(a, b)))
+        print("{:d} {} {:d} = {}".format(a, argv[2], b, div(a, b)))

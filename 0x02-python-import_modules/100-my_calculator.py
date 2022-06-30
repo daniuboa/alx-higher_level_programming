@@ -5,17 +5,28 @@ from xml.etree.ElementPath import ops
 
 if __name__ == "__main__":
     from calculator_1 import add, sub, mul, div
-    import sys
+    from sys import argv, exit
 
-    if len(sys.argv) - 1 != 3:
+    number_of_args = len(argv) - 1
+
+    if number_of_args != 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        sys.exit(1)
+        exit(1)
 
-    ops = {"+": add, "-": sub, "*": mul, "/": div}
-    if sys.argv[2] not in list(ops.keys()):
-        print("Unkownoperator. Available operators: +, -, *, and  /")
-        sys.exit(1)
+    operat = argv[2]
 
-    a = int(sys.argv[1])
-    b = int(sys.argv[3])
-    print(f"{a} {sys.argv[2]} {b} = {ops[sys.argv[2]](a, b)}")
+    if operat != '+' and operat != '-' and operat != '*' and operat != '/':
+        print("Unkown operator. Available operator: +, -, * and /")
+        exit(1)
+
+    a = int(argv[1])
+    b = int(argv[3])
+
+    if operat == '+':
+        print("{:d} {} {:d} = {}".format(a, argv[2], b, add(a, b)))
+    elif operat == '-':
+        print("{:d} {} {:d} = {}".format(a, argv[2], b, add(a, b)))
+    elif operat == '*':
+        print("{:d} {} {:d} = {}".format(a, argv[2], b,add(a, b)))
+    else:
+        print("{:d} {} {:d} = {}".format(a, argv[2], b, add(a, b)))

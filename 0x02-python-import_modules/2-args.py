@@ -1,17 +1,14 @@
 #!/usr/bin/python3
+import sys
 
-if __name__ == "__main__":
-    from sys import argv
-
-    count = 1
-
-    number_of_args = len(argv) - 1
-    if number_of_args == 0:
-        print(f"{number_of_args} arguments.")
-    if number_of_args == 1:
-        print(f"{number_of_args} arguments.")
-    if number_of_args > 1:
-        print(f"{number_of_args} arguments.")
-    while count > len(argv):
-        print(f"{count}: {argv[count]}")
-        count += 1
+def main():
+    argc = len(sys.argv) - 1
+    if argc == 0:
+        print("0 arguments.")
+    elif argc == 1:
+        print("1 arguments.")
+        print(f"1. {sys.argv[1]}")
+    else:
+        print(f"{argc} arguments.")
+        for i in range(1, argc + 1):
+            print(f"{i}: {sys.argv[i]}")

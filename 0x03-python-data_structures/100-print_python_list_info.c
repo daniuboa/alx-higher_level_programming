@@ -1,28 +1,29 @@
-#include "Python.h"
+#include <Python.h>
+#include <stdio.h>
 /**
- * print_python_list_info - Prints information about python objects
- * @p: PyObject pointer to print info about
- * Compile with:
- * gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared
- (* -Wl,-soname,PyList -o libPyList.so -fPIC -I/usr/include/python3.4
- (* 100-print_python_list_info.c
-*/
+ * print_python_list_info - print python
+ * @p: input
+ */
 void print_python_list_info(PyObject *p)
 {
-	Py_ssize_t i, py_list_size;
-	PyObject *item;
-	const char *item_type;
-	PyListObject *list_object_cast;
+	unsigned int l_idx;
+	unsigned int len;
+	unsigned int allocated;
+	PyTypeObject *type;
+	const char *name;
 
-	list_object_cast = (PyListObject *)p;
-	py_list_size = PyList_Size(p);
+	if (p == NULL)
+		return;
 
-	printf("[*] Size of the Python List = %d\n", (int) py_list_size);
-	printf("[*] Allocated = %d\n", (int)list_object_cast->allocated);
-	for (i = 0; i < py_list_size; i++)
+	len = (unsigned int) PyList_Size(p);
+	allocated = (unsigned int) ((PyListObject *)p)->allocated;
+	printf("[*] Size of the Python List = %d\n", len);
+	printf("[*] Allocated = %d\n", allocated);
+
+	for (l_idx = 0; l_idx < len; l_idx++)
 	{
-		item = PyList_GetItem(p, i);
-		item_type = Py_TYPE(item)->tp_name;
-		printf("Element %d: %s\n", (int) i, item_type);
+		type = PyList_GET_ITEM(p, l_idx)->ob_type;
+		name = type->tp_name;
+		printf("Element %d: %s\n", l_idx, name);
 	}
 }

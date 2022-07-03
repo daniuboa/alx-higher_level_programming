@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-
-from re import A
-
-
 a = 89
 b = 10
 

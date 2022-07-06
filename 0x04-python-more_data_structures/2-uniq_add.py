@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 
-from unittest import result
-
-
 def uniq_add(my_list=[]):
+
+    new_list = list(set(my_list))
     result = 0
-    for x in set(my_list):
+    for x in new_list:
         result += x
 
     return (result)

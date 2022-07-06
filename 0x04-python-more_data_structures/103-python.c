@@ -11,7 +11,7 @@ void print_python_list(PyObject *p)
 {
 	int size, alloc, i;
 	const char *type;
-	PListObject *list = (PyListObject *)p;
+	PyListObject *list = (PyListObject *)p;
 	PyVarObject *var = (PyVarObject *)p;
 
 	size = var->ob_size;
@@ -28,7 +28,7 @@ void print_python_list(PyObject *p)
 		if (strcmp(type, "bytes") == 0)
 			print_python_bytes(list->ob_item[i]);
 	}
-
+}
 
 /**
  * print_python_bytes - Prints basic info about Python byte objects.
@@ -49,7 +49,7 @@ void print_python_bytes(PyObject *p)
 	printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
 	printf("  trying string: %s\n", bytes->ob_sval);
 
-	if  (((PyVarObject *)p)->ob_size > 10)
+	if (((PyVarObject *)p)->ob_size > 10)
 		size = 10;
 	else
 		size = ((PyVarObject *)p)->ob_size + 1;

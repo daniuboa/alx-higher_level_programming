@@ -1,22 +1,19 @@
 #!/usr/bin/python3
-# 101-safe_function.py
-# Brennan D Baraban <375@holbertonschool.com>
-
-import sys
-
 
 def safe_function(fct, *args):
-    """Executes a function safely.
+    """function that executes a function safely.
     Args:
-        fct: The function to execute.
-        args: Arguments for fct.
-    Returns:
-        If an error occurs - None.
-        Otherwise - the result of the call to fct.
+        fct: assume fct will be always a pointer to a function.
+    You have to use try: / except:
+    Returns: The result of the function. Otherwise, returns None if,
+    something happens during the function and prints in stderr the,
+    error precede by Exception:
     """
+    import sys
+
     try:
         result = fct(*args)
-        return (result)
-    except:
-        print("Exception: {}".format(sys.exc_info()[1]), file=sys.stderr)
-        return (None)
+    except Exception as err:
+        sys.stderr.write("Exception: {}\n".format(err))
+        return None
+    return result

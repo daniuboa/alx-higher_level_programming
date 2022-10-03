@@ -8,5 +8,4 @@ if (process.argv.length === 3) {
 } else {
     message = 'Arguments found';
 }
-
 console.log(message);

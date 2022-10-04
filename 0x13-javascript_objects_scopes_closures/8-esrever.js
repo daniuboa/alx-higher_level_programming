@@ -1,8 +1,8 @@
 #!/usr/bin/node
 /**
  * function to reverse a list
- * @param {list} list - list to reverse
- * @returns {list} reversed list
+ * @param {list} list - list to examine
+ * @returns {number} - the reversed version of a list
  */
 exports.esrever = function (list) {
   const newList = [];
@@ -10,4 +10,4 @@ exports.esrever = function (list) {
     newList.push(list[i]);
   }
   return newList;
-}
+};

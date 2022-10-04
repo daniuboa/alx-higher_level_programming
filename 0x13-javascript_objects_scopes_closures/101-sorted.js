@@ -17,3 +17,4 @@ for (const key in initDict) {
   }
   newDict[initDict[key]].push(key);
 }
+console.log(newDict);

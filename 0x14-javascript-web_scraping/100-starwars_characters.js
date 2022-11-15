@@ -1,19 +1,20 @@
 #!/usr/bin/node
+// prints all characters of a Star Wars movie
 const request = require('request');
-const epId = process.argv[2];
-const apiUrl = `https://swapi.co/api/films/${epId}`;
-request.get(apiUrl, (error, response, body) => {
+const url = 'http://swapi.co/api/films/' + process.argv[2];
+
+request(url, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    const charList = JSON.parse(body).characters;
-    for (let i = 0; i < charList.length; i++) {
-      request.get(charList[i], (err, res, body) => {
-        if (err) {
-          console.log(err);
+    const filmData = JSON.parse(body);
+    for (let character of filmData['characters']) {
+      request(character, function (error, response, body) {
+        if (error) {
+          console.log(error);
         } else {
-          const names = JSON.parse(body).name;
-          console.log(names);
+          const charData = JSON.parse(body);
+          console.log(charData['name']);
         }
       });
     }
